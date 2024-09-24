@@ -1,0 +1,91 @@
+/* ナビゲーションバー全体のスタイル */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
+  color: white;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* メニューアイコンのスタイル */
+.menu-icon,
+.close-icon {
+  display: none; /* デスクトップサイズでは非表示 */
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px;
+  transition: all 0.3s ease;
+}
+
+/* ナビゲーションリンクのスタイル */
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.nav-links a:hover {
+  color: #f0a500;
+}
+
+/* スマートフォンサイズのためのメディアクエリ */
+@media (max-width: 768px) {
+  .menu-icon,
+  .close-icon {
+    display: block; /* スマホサイズでは表示 */
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #333;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* 初期状態では画面外 */
+    transition: transform 0.3s ease;
+    z-index: 1000; /* ナビゲーションバーの上に表示 */
+  }
+
+  .nav-links.active {
+    transform: translateX(0); /* メニューが開いたときに表示 */
+  }
+
+  .nav-links li {
+    margin: 1.5rem 0;
+  }
+
+  /* 閉じるボタンのスタイル */
+  .close-icon {
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+  }
+}
